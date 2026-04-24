@@ -5,6 +5,8 @@ import { ContinueButton } from "@/components/onboarding/continue-button";
 import { getEquipment } from "@/lib/supabase/queries";
 import { STEP_BY_SLUG } from "@/lib/config";
 
+export const dynamic = "force-dynamic";
+
 export default async function EquipmentPage() {
   const items = await getEquipment();
   const step = STEP_BY_SLUG["equipment"]!;

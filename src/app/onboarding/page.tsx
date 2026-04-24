@@ -2,6 +2,8 @@ import { redirect } from "next/navigation";
 import { getOrSeedEmployee } from "@/lib/supabase/queries";
 import { stepForSession } from "@/lib/steps";
 
+export const dynamic = "force-dynamic";
+
 export default async function OnboardingIndex() {
   const { session } = await getOrSeedEmployee();
   if (session.is_complete) redirect("/onboarding/complete");

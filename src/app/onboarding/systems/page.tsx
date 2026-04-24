@@ -5,6 +5,8 @@ import { ContinueButton } from "@/components/onboarding/continue-button";
 import { getSystems } from "@/lib/supabase/queries";
 import { STEP_BY_SLUG } from "@/lib/config";
 
+export const dynamic = "force-dynamic";
+
 export default async function SystemsPage() {
   const systems = await getSystems();
   const step = STEP_BY_SLUG["systems"]!;

@@ -5,6 +5,8 @@ import { CompleteButton } from "@/components/onboarding/complete-button";
 import { getBuildingAccess } from "@/lib/supabase/queries";
 import { STEP_BY_SLUG } from "@/lib/config";
 
+export const dynamic = "force-dynamic";
+
 export default async function BuildingAccessPage() {
   const items = await getBuildingAccess();
   const step = STEP_BY_SLUG["building-access"]!;

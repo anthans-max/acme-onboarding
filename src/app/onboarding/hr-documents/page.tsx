@@ -5,6 +5,8 @@ import { ContinueButton } from "@/components/onboarding/continue-button";
 import { getDocuments, isDocDone } from "@/lib/supabase/queries";
 import { STEP_BY_SLUG } from "@/lib/config";
 
+export const dynamic = "force-dynamic";
+
 export default async function HrDocumentsPage() {
   const docs = await getDocuments();
   const step = STEP_BY_SLUG["hr-documents"]!;

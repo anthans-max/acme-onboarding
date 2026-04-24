@@ -5,6 +5,8 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { getAllEmployeesWithProgress } from "@/lib/supabase/queries";
 import { fullName } from "@/lib/format";
 
+export const dynamic = "force-dynamic";
+
 type SearchParams = { filter?: string; q?: string };
 
 export default async function AdminDashboard({

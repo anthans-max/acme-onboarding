@@ -7,6 +7,8 @@ import {
   getSystems,
 } from "@/lib/supabase/queries";
 
+export const dynamic = "force-dynamic";
+
 export default async function CompletePage() {
   const [{ employee }, systems, documents, equipment, access] = await Promise.all([
     getOrSeedEmployee(),
