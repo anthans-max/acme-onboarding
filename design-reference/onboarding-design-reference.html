@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Onboarding Design Reference</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --brand-50: #EEF4FF;
+    --brand-100: #C7D9FC;
+    --brand-200: #97B8F8;
+    --brand-400: #4B82F0;
+    --brand-600: #2356C8;
+    --brand-800: #112B6E;
+    --brand-900: #081640;
+    --green-50: #EDFAF3;
+    --green-400: #22C068;
+    --green-600: #14855F;
+    --green-800: #0A4A32;
+    --amber-50: #FFF8EA;
+    --amber-400: #F5A623;
+    --amber-600: #B87014;
+    --amber-800: #6B3E05;
+    --red-50: #FEF0EF;
+    --red-400: #F05252;
+    --red-600: #B91C1C;
+    --gray-0: #FFFFFF;
+    --gray-50: #F7F8FA;
+    --gray-100: #EEF0F4;
+    --gray-200: #DDE1EA;
+    --gray-300: #C4CAD6;
+    --gray-400: #8C95A6;
+    --gray-500: #5C6475;
+    --gray-600: #3D4454;
+    --gray-700: #252C3A;
+    --gray-800: #151B27;
+    --gray-900: #090D14;
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --shadow-sm: 0 1px 3px rgba(9,13,20,0.08), 0 1px 2px rgba(9,13,20,0.04);
+    --shadow-md: 0 4px 12px rgba(9,13,20,0.08), 0 2px 4px rgba(9,13,20,0.04);
+    --shadow-lg: 0 12px 32px rgba(9,13,20,0.10), 0 4px 8px rgba(9,13,20,0.06);
+    --font: 'DM Sans', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font);
+    background: var(--gray-50);
+    color: var(--gray-700);
+    min-height: 100vh;
+  }
+
+  /* ── NAV ─────────────────────────────────────── */
+  .top-nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--gray-0);
+    border-bottom: 1px solid var(--gray-100);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 24px; height: 56px;
+    box-shadow: var(--shadow-sm);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 10px; }
+  .nav-logo-mark {
+    width: 32px; height: 32px; border-radius: 8px;
+    background: var(--brand-600);
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 14px; font-weight: 600; letter-spacing: -0.5px;
+  }
+  .nav-brand { font-size: 15px; font-weight: 600; color: var(--gray-800); }
+  .nav-tabs { display: flex; gap: 2px; }
+  .nav-tab {
+    padding: 6px 14px; border-radius: var(--radius-sm);
+    font-size: 13px; font-weight: 500; cursor: pointer;
+    color: var(--gray-500); border: none; background: none;
+    transition: all 0.15s;
+  }
+  .nav-tab:hover { background: var(--gray-50); color: var(--gray-700); }
+  .nav-tab.active { background: var(--brand-50); color: var(--brand-600); }
+  .nav-right { display: flex; align-items: center; gap: 12px; }
+  .nav-avatar {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--brand-100); color: var(--brand-600);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 600; cursor: pointer;
+  }
+
+  /* ── SCREENS ─────────────────────────────────── */
+  .screen { display: none; }
+  .screen.active { display: block; }
+
+  /* ── EMPLOYEE ONBOARDING LAYOUT ──────────────── */
+  .ob-layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    min-height: calc(100vh - 56px);
+  }
+
+  /* Sidebar */
+  .ob-sidebar {
+    background: var(--gray-0);
+    border-right: 1px solid var(--gray-100);
+    padding: 28px 20px;
+    display: flex; flex-direction: column; gap: 6px;
+    position: sticky; top: 56px; height: calc(100vh - 56px); overflow-y: auto;
+  }
+  .ob-sidebar-header {
+    padding: 0 8px 20px;
+    border-bottom: 1px solid var(--gray-100);
+    margin-bottom: 8px;
+  }
+  .ob-sidebar-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--gray-400); margin-bottom: 10px;
+  }
+  .ob-progress-bar {
+    height: 4px; background: var(--gray-100); border-radius: 99px; overflow: hidden;
+    margin-bottom: 6px;
+  }
+  .ob-progress-fill {
+    height: 100%; background: var(--brand-400); border-radius: 99px;
+    transition: width 0.4s ease;
+  }
+  .ob-progress-text { font-size: 12px; color: var(--gray-400); }
+  .ob-progress-text span { color: var(--gray-700); font-weight: 500; }
+
+  .ob-nav-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 12px; border-radius: var(--radius-md);
+    cursor: pointer; transition: all 0.12s;
+    border: 1px solid transparent;
+  }
+  .ob-nav-item:hover { background: var(--gray-50); }
+  .ob-nav-item.active {
+    background: var(--brand-50);
+    border-color: var(--brand-100);
+  }
+  .ob-nav-item.done .ob-nav-icon { background: var(--green-50); color: var(--green-600); }
+  .ob-nav-icon {
+    width: 32px; height: 32px; border-radius: var(--radius-sm);
+    background: var(--gray-100); color: var(--gray-500);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; flex-shrink: 0;
+    transition: all 0.12s;
+  }
+  .ob-nav-item.active .ob-nav-icon { background: var(--brand-100); color: var(--brand-600); }
+  .ob-nav-text { flex: 1; }
+  .ob-nav-name { font-size: 13px; font-weight: 500; color: var(--gray-700); }
+  .ob-nav-item.active .ob-nav-name { color: var(--brand-700); }
+  .ob-nav-sub { font-size: 11px; color: var(--gray-400); margin-top: 1px; }
+  .ob-nav-check {
+    width: 18px; height: 18px; border-radius: 50%;
+    border: 1.5px solid var(--gray-200);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .ob-nav-item.done .ob-nav-check {
+    background: var(--green-400); border-color: var(--green-400); color: white; font-size: 9px;
+  }
+
+  /* Main content */
+  .ob-main {
+    padding: 40px 48px;
+    max-width: 760px;
+  }
+  .ob-step-header { margin-bottom: 32px; }
+  .ob-step-eyebrow {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--brand-400); margin-bottom: 8px;
+  }
+  .ob-step-title { font-size: 26px; font-weight: 600; color: var(--gray-800); line-height: 1.2; margin-bottom: 8px; }
+  .ob-step-desc { font-size: 15px; color: var(--gray-500); line-height: 1.6; }
+
+  /* Cards */
+  .ob-card {
+    background: var(--gray-0); border: 1px solid var(--gray-100);
+    border-radius: var(--radius-lg); padding: 24px;
+    box-shadow: var(--shadow-sm); margin-bottom: 16px;
+  }
+  .ob-card-title {
+    font-size: 13px; font-weight: 600; color: var(--gray-500);
+    text-transform: uppercase; letter-spacing: 0.06em;
+    margin-bottom: 16px;
+  }
+
+  /* Form fields */
+  .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .field-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field-label { font-size: 13px; font-weight: 500; color: var(--gray-600); }
+  .field-optional { font-size: 11px; color: var(--gray-400); font-weight: 400; }
+  .field-input {
+    height: 40px; padding: 0 12px;
+    border: 1px solid var(--gray-200); border-radius: var(--radius-md);
+    font-family: var(--font); font-size: 14px; color: var(--gray-700);
+    background: var(--gray-0); outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .field-input:focus { border-color: var(--brand-400); box-shadow: 0 0 0 3px var(--brand-50); }
+  .field-input.filled { border-color: var(--gray-300); background: var(--gray-50); }
+  .field-input.prefilled { border-color: var(--green-400); background: var(--green-50); color: var(--green-800); }
+  select.field-input { cursor: pointer; }
+  .field-hint { font-size: 12px; color: var(--gray-400); }
+
+  /* System access */
+  .sys-item {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 16px; border-radius: var(--radius-md);
+    border: 1px solid var(--gray-100); cursor: pointer;
+    transition: all 0.15s; margin-bottom: 8px;
+    background: var(--gray-0);
+  }
+  .sys-item:hover { border-color: var(--gray-200); background: var(--gray-50); }
+  .sys-item.checked { border-color: var(--brand-200); background: var(--brand-50); }
+  .sys-icon {
+    width: 40px; height: 40px; border-radius: var(--radius-md);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+  .sys-info { flex: 1; }
+  .sys-name { font-size: 14px; font-weight: 500; color: var(--gray-700); }
+  .sys-desc { font-size: 12px; color: var(--gray-400); margin-top: 2px; }
+  .sys-right { display: flex; align-items: center; gap: 10px; }
+  .badge {
+    font-size: 11px; font-weight: 500; padding: 3px 10px;
+    border-radius: 99px;
+  }
+  .badge-required { background: #FFF0F0; color: var(--red-600); }
+  .badge-optional { background: var(--gray-100); color: var(--gray-500); }
+  .badge-requested { background: var(--green-50); color: var(--green-600); }
+  .badge-active { background: var(--green-50); color: var(--green-600); }
+  .badge-pending { background: var(--amber-50); color: var(--amber-600); }
+  .badge-scheduled { background: var(--brand-50); color: var(--brand-600); }
+  .toggle {
+    width: 22px; height: 22px; border-radius: 50%;
+    border: 1.5px solid var(--gray-200);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-size: 10px; transition: all 0.12s;
+  }
+  .sys-item.checked .toggle { background: var(--brand-400); border-color: var(--brand-400); color: white; }
+
+  /* HR docs grid */
+  .hr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .hr-doc {
+    padding: 16px; border-radius: var(--radius-md);
+    border: 1px solid var(--gray-100); cursor: pointer;
+    transition: all 0.15s; background: var(--gray-0);
+  }
+  .hr-doc:hover { border-color: var(--gray-200); background: var(--gray-50); }
+  .hr-doc.complete { border-color: var(--green-400); background: var(--green-50); }
+  .hr-doc-icon { font-size: 22px; margin-bottom: 8px; }
+  .hr-doc-name { font-size: 13px; font-weight: 500; color: var(--gray-700); margin-bottom: 4px; }
+  .hr-doc.complete .hr-doc-name { color: var(--green-800); }
+  .hr-doc-status { font-size: 11px; color: var(--gray-400); }
+  .hr-doc.complete .hr-doc-status { color: var(--green-600); }
+
+  /* Equipment */
+  .equip-item {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 16px; border-radius: var(--radius-md);
+    border: 1px solid var(--gray-100); cursor: pointer;
+    transition: all 0.15s; margin-bottom: 8px;
+    background: var(--gray-0);
+  }
+  .equip-item:hover { border-color: var(--gray-200); background: var(--gray-50); }
+  .equip-item.checked { border-color: var(--green-400); background: var(--green-50); }
+  .equip-icon { font-size: 20px; width: 36px; text-align: center; flex-shrink: 0; }
+  .equip-info { flex: 1; }
+  .equip-name { font-size: 14px; font-weight: 500; color: var(--gray-700); }
+  .equip-item.checked .equip-name { color: var(--green-800); }
+  .equip-detail { font-size: 12px; color: var(--gray-400); margin-top: 2px; }
+  .equip-serial { font-family: var(--font-mono); font-size: 11px; color: var(--gray-400); }
+  .checkbox {
+    width: 20px; height: 20px; border-radius: 5px;
+    border: 1.5px solid var(--gray-200);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-size: 10px; transition: all 0.12s;
+  }
+  .equip-item.checked .checkbox { background: var(--green-400); border-color: var(--green-400); color: white; }
+
+  /* Access items */
+  .access-item {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 16px; border-radius: var(--radius-md);
+    border: 1px solid var(--gray-100);
+    margin-bottom: 8px; background: var(--gray-0);
+  }
+  .access-icon { font-size: 18px; width: 36px; text-align: center; flex-shrink: 0; }
+  .access-info { flex: 1; }
+  .access-name { font-size: 14px; font-weight: 500; color: var(--gray-700); }
+  .access-detail { font-size: 12px; color: var(--gray-400); margin-top: 2px; }
+  .access-value { font-size: 12px; color: var(--gray-600); font-weight: 500; margin-top: 2px; }
+
+  /* Step footer */
+  .ob-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 0 0; border-top: 1px solid var(--gray-100); margin-top: 8px;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 20px; border-radius: var(--radius-md);
+    font-family: var(--font); font-size: 14px; font-weight: 500;
+    cursor: pointer; border: 1px solid transparent; transition: all 0.15s;
+  }
+  .btn-ghost { background: none; border-color: var(--gray-200); color: var(--gray-600); }
+  .btn-ghost:hover { background: var(--gray-50); border-color: var(--gray-300); }
+  .btn-primary { background: var(--brand-600); border-color: var(--brand-600); color: white; }
+  .btn-primary:hover { background: var(--brand-800); }
+  .btn-success { background: var(--green-400); border-color: var(--green-400); color: white; }
+  .ob-footer-hint { font-size: 12px; color: var(--gray-400); }
+
+  /* ── WELCOME SCREEN ──────────────────────────── */
+  .welcome-hero {
+    background: linear-gradient(135deg, var(--brand-600) 0%, var(--brand-800) 100%);
+    border-radius: var(--radius-xl); padding: 48px 40px;
+    color: white; margin-bottom: 24px; position: relative; overflow: hidden;
+  }
+  .welcome-hero::before {
+    content: ''; position: absolute; top: -40px; right: -40px;
+    width: 200px; height: 200px; border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+  }
+  .welcome-hero::after {
+    content: ''; position: absolute; bottom: -60px; right: 60px;
+    width: 140px; height: 140px; border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+  .welcome-eyebrow { font-size: 12px; font-weight: 500; opacity: 0.7; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px; }
+  .welcome-title { font-size: 32px; font-weight: 600; line-height: 1.2; margin-bottom: 12px; }
+  .welcome-sub { font-size: 15px; opacity: 0.8; line-height: 1.6; max-width: 420px; margin-bottom: 28px; }
+  .welcome-meta { display: flex; gap: 24px; flex-wrap: wrap; }
+  .welcome-meta-item { display: flex; flex-direction: column; gap: 2px; }
+  .welcome-meta-label { font-size: 11px; opacity: 0.6; text-transform: uppercase; letter-spacing: 0.06em; }
+  .welcome-meta-value { font-size: 14px; font-weight: 500; }
+  .welcome-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .welcome-step-card {
+    background: var(--gray-0); border: 1px solid var(--gray-100);
+    border-radius: var(--radius-lg); padding: 20px;
+    box-shadow: var(--shadow-sm);
+  }
+  .welcome-step-num { font-size: 11px; font-weight: 600; color: var(--brand-400); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+  .welcome-step-name { font-size: 14px; font-weight: 500; color: var(--gray-700); margin-bottom: 4px; }
+  .welcome-step-desc { font-size: 12px; color: var(--gray-400); line-height: 1.5; }
+
+  /* ── COMPLETION SCREEN ───────────────────────── */
+  .complete-hero {
+    background: linear-gradient(135deg, var(--green-600) 0%, #0A4A32 100%);
+    border-radius: var(--radius-xl); padding: 48px 40px;
+    color: white; margin-bottom: 24px; text-align: center;
+  }
+  .complete-icon { font-size: 48px; margin-bottom: 16px; }
+  .complete-title { font-size: 28px; font-weight: 600; margin-bottom: 8px; }
+  .complete-sub { font-size: 15px; opacity: 0.8; }
+  .complete-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; }
+  .stat-card {
+    background: var(--gray-0); border: 1px solid var(--gray-100);
+    border-radius: var(--radius-md); padding: 16px;
+    box-shadow: var(--shadow-sm);
+  }
+  .stat-label { font-size: 12px; color: var(--gray-400); margin-bottom: 4px; }
+  .stat-value { font-size: 22px; font-weight: 600; color: var(--gray-800); }
+  .stat-sub { font-size: 11px; color: var(--gray-400); margin-top: 2px; }
+
+  /* ── ADMIN DASHBOARD ─────────────────────────── */
+  .admin-layout { padding: 32px 40px; }
+  .admin-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 28px; }
+  .admin-title { font-size: 22px; font-weight: 600; color: var(--gray-800); }
+  .admin-sub { font-size: 14px; color: var(--gray-400); margin-top: 2px; }
+  .admin-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
+  .admin-stat {
+    background: var(--gray-0); border: 1px solid var(--gray-100);
+    border-radius: var(--radius-lg); padding: 20px;
+    box-shadow: var(--shadow-sm);
+  }
+  .admin-stat-label { font-size: 12px; color: var(--gray-400); font-weight: 500; margin-bottom: 8px; }
+  .admin-stat-value { font-size: 28px; font-weight: 600; color: var(--gray-800); line-height: 1; margin-bottom: 4px; }
+  .admin-stat-delta { font-size: 12px; color: var(--green-600); }
+  .admin-filters { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+  .filter-chip {
+    padding: 6px 14px; border-radius: 99px; font-size: 13px; font-weight: 500;
+    border: 1px solid var(--gray-200); cursor: pointer;
+    background: var(--gray-0); color: var(--gray-500);
+    transition: all 0.12s;
+  }
+  .filter-chip.active { background: var(--brand-50); border-color: var(--brand-200); color: var(--brand-600); }
+  .filter-chip:hover:not(.active) { background: var(--gray-50); }
+  .search-input {
+    height: 36px; padding: 0 12px 0 36px;
+    border: 1px solid var(--gray-200); border-radius: var(--radius-md);
+    font-family: var(--font); font-size: 13px; outline: none;
+    background: var(--gray-0) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%238C95A6' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E") no-repeat 11px center;
+    min-width: 200px; margin-left: auto;
+    transition: border-color 0.15s;
+  }
+  .search-input:focus { border-color: var(--brand-400); }
+
+  /* Employee table */
+  .emp-table { width: 100%; border-collapse: collapse; }
+  .emp-table th {
+    text-align: left; padding: 10px 16px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--gray-400);
+    border-bottom: 1px solid var(--gray-100);
+    background: var(--gray-50);
+  }
+  .emp-table th:first-child { border-radius: var(--radius-sm) 0 0 0; }
+  .emp-table th:last-child { border-radius: 0 var(--radius-sm) 0 0; }
+  .emp-table td { padding: 14px 16px; border-bottom: 1px solid var(--gray-100); vertical-align: middle; }
+  .emp-table tr:last-child td { border-bottom: none; }
+  .emp-table tr:hover td { background: var(--gray-50); }
+  .emp-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 600; flex-shrink: 0;
+  }
+  .emp-row-name { display: flex; align-items: center; gap: 12px; }
+  .emp-name { font-size: 14px; font-weight: 500; color: var(--gray-700); }
+  .emp-email { font-size: 12px; color: var(--gray-400); }
+  .emp-dept { font-size: 13px; color: var(--gray-600); }
+  .emp-date { font-size: 13px; color: var(--gray-500); }
+  .progress-mini { display: flex; align-items: center; gap: 8px; }
+  .progress-bar-mini { flex: 1; height: 4px; background: var(--gray-100); border-radius: 99px; overflow: hidden; min-width: 60px; }
+  .progress-fill-mini { height: 100%; background: var(--brand-400); border-radius: 99px; }
+  .progress-fill-mini.done { background: var(--green-400); }
+  .progress-pct { font-size: 12px; color: var(--gray-500); min-width: 28px; }
+  .table-wrap {
+    background: var(--gray-0); border: 1px solid var(--gray-100);
+    border-radius: var(--radius-lg); overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+  .btn-sm {
+    padding: 6px 12px; font-size: 12px; border-radius: var(--radius-sm);
+    border: 1px solid var(--gray-200); background: var(--gray-0);
+    color: var(--gray-600); cursor: pointer; font-family: var(--font); font-weight: 500;
+    transition: all 0.12s;
+  }
+  .btn-sm:hover { background: var(--gray-50); }
+
+  /* Employee detail panel */
+  .detail-layout { display: grid; grid-template-columns: 1fr 320px; gap: 20px; }
+  .detail-card {
+    background: var(--gray-0); border: 1px solid var(--gray-100);
+    border-radius: var(--radius-lg); padding: 20px; box-shadow: var(--shadow-sm);
+    margin-bottom: 16px;
+  }
+  .detail-card-title { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-400); margin-bottom: 14px; }
+  .detail-profile { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+  .detail-avatar {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--brand-100); color: var(--brand-600);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 600;
+  }
+  .detail-name { font-size: 18px; font-weight: 600; color: var(--gray-800); margin-bottom: 2px; }
+  .detail-role { font-size: 13px; color: var(--gray-500); }
+  .detail-meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .detail-meta-item {}
+  .detail-meta-label { font-size: 11px; color: var(--gray-400); margin-bottom: 3px; }
+  .detail-meta-value { font-size: 13px; font-weight: 500; color: var(--gray-700); }
+  .task-item { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--gray-100); }
+  .task-item:last-child { border-bottom: none; }
+  .task-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .task-dot.done { background: var(--green-400); }
+  .task-dot.pending { background: var(--amber-400); }
+  .task-dot.overdue { background: var(--red-400); }
+  .task-text { font-size: 13px; color: var(--gray-600); flex: 1; }
+  .task-date { font-size: 11px; color: var(--gray-400); }
+  .activity-item { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--gray-100); }
+  .activity-item:last-child { border-bottom: none; }
+  .activity-icon { width: 28px; height: 28px; border-radius: 50%; background: var(--gray-100); display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; margin-top: 1px; }
+  .activity-text { font-size: 13px; color: var(--gray-600); line-height: 1.5; }
+  .activity-time { font-size: 11px; color: var(--gray-400); margin-top: 2px; }
+  .section-divider { height: 1px; background: var(--gray-100); margin: 20px 0; }
+</style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav class="top-nav">
+  <div class="nav-logo">
+    <div class="nav-logo-mark">A</div>
+    <span class="nav-brand">Acme Corp</span>
+  </div>
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showScreen('employee')">Employee View</button>
+    <button class="nav-tab" onclick="showScreen('admin')">Admin Dashboard</button>
+    <button class="nav-tab" onclick="showScreen('detail')">Employee Detail</button>
+  </div>
+  <div class="nav-right">
+    <div class="nav-avatar">AJ</div>
+  </div>
+</nav>
+
+
+<!-- ════════════════════════════════════════════
+     SCREEN 1 — EMPLOYEE ONBOARDING
+════════════════════════════════════════════ -->
+<div id="screen-employee" class="screen active">
+  <div class="ob-layout">
+
+    <!-- Sidebar -->
+    <aside class="ob-sidebar">
+      <div class="ob-sidebar-header">
+        <div class="ob-sidebar-label">Your progress</div>
+        <div class="ob-progress-bar"><div class="ob-progress-fill" id="progressFill" style="width:16%"></div></div>
+        <div class="ob-progress-text"><span id="progressText">1</span> of 6 steps complete</div>
+      </div>
+
+      <div class="ob-nav-item done" onclick="setStep(0)">
+        <div class="ob-nav-icon">👋</div>
+        <div class="ob-nav-text"><div class="ob-nav-name">Welcome</div><div class="ob-nav-sub">Getting started</div></div>
+        <div class="ob-nav-check">✓</div>
+      </div>
+      <div class="ob-nav-item active" onclick="setStep(1)" id="nav-1">
+        <div class="ob-nav-icon">👤</div>
+        <div class="ob-nav-text"><div class="ob-nav-name">Your profile</div><div class="ob-nav-sub">Personal details</div></div>
+        <div class="ob-nav-check"></div>
+      </div>
+      <div class="ob-nav-item" onclick="setStep(2)" id="nav-2">
+        <div class="ob-nav-icon">💻</div>
+        <div class="ob-nav-text"><div class="ob-nav-name">System access</div><div class="ob-nav-sub">8 tools available</div></div>
+        <div class="ob-nav-check"></div>
+      </div>
+      <div class="ob-nav-item" onclick="setStep(3)" id="nav-3">
+        <div class="ob-nav-icon">📄</div>
+        <div class="ob-nav-text"><div class="ob-nav-name">HR paperwork</div><div class="ob-nav-sub">8 forms to complete</div></div>
+        <div class="ob-nav-check"></div>
+      </div>
+      <div class="ob-nav-item" onclick="setStep(4)" id="nav-4">
+        <div class="ob-nav-icon">📦</div>
+        <div class="ob-nav-text"><div class="ob-nav-name">Equipment</div><div class="ob-nav-sub">7 items to confirm</div></div>
+        <div class="ob-nav-check"></div>
+      </div>
+      <div class="ob-nav-item" onclick="setStep(5)" id="nav-5">
+        <div class="ob-nav-icon">🏢</div>
+        <div class="ob-nav-text"><div class="ob-nav-name">Building access</div><div class="ob-nav-sub">Status overview</div></div>
+        <div class="ob-nav-check"></div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="ob-main" id="ob-main">
+
+      <!-- STEP 0: Welcome -->
+      <div id="step-0" class="ob-step" style="display:none">
+        <div class="welcome-hero">
+          <div class="welcome-eyebrow">Day 1 onboarding</div>
+          <div class="welcome-title">Welcome to Acme, Alex! 🎉</div>
+          <div class="welcome-sub">We're thrilled to have you join the Engineering team. This quick flow walks you through everything you need to hit the ground running.</div>
+          <div class="welcome-meta">
+            <div class="welcome-meta-item"><div class="welcome-meta-label">Start date</div><div class="welcome-meta-value">Jan 15, 2025</div></div>
+            <div class="welcome-meta-item"><div class="welcome-meta-label">Department</div><div class="welcome-meta-value">Engineering</div></div>
+            <div class="welcome-meta-item"><div class="welcome-meta-label">Manager</div><div class="welcome-meta-value">Jordan Lee</div></div>
+            <div class="welcome-meta-item"><div class="welcome-meta-label">Location</div><div class="welcome-meta-value">Los Angeles</div></div>
+          </div>
+        </div>
+        <div class="welcome-steps">
+          <div class="welcome-step-card"><div class="welcome-step-num">Step 1</div><div class="welcome-step-name">Your profile</div><div class="welcome-step-desc">Confirm personal info and emergency contact.</div></div>
+          <div class="welcome-step-card"><div class="welcome-step-num">Step 2–3</div><div class="welcome-step-name">Access & paperwork</div><div class="welcome-step-desc">Request system access and complete HR forms.</div></div>
+          <div class="welcome-step-card"><div class="welcome-step-num">Step 4–5</div><div class="welcome-step-name">Equipment & access</div><div class="welcome-step-desc">Confirm your equipment and building access.</div></div>
+        </div>
+        <div class="ob-footer">
+          <div></div>
+          <button class="btn btn-primary" onclick="setStep(1)">Get started →</button>
+        </div>
+      </div>
+
+      <!-- STEP 1: Profile -->
+      <div id="step-1" class="ob-step">
+        <div class="ob-step-header">
+          <div class="ob-step-eyebrow">Step 1 of 5</div>
+          <div class="ob-step-title">Your profile</div>
+          <div class="ob-step-desc">Review your details and fill in anything missing. Pre-filled fields came from your offer letter.</div>
+        </div>
+        <div class="ob-card">
+          <div class="ob-card-title">Personal information</div>
+          <div class="field-grid" style="margin-bottom:16px">
+            <div class="field"><div class="field-label">First name</div><input class="field-input prefilled" value="Alex" /></div>
+            <div class="field"><div class="field-label">Last name</div><input class="field-input prefilled" value="Johnson" /></div>
+          </div>
+          <div class="field" style="margin-bottom:16px"><div class="field-label">Preferred name <span class="field-optional">optional</span></div><input class="field-input" placeholder="What should we call you?" /></div>
+          <div class="field-grid" style="margin-bottom:16px">
+            <div class="field"><div class="field-label">Work email</div><input class="field-input prefilled" value="alex.johnson@acme.com" /></div>
+            <div class="field"><div class="field-label">Pronouns <span class="field-optional">optional</span></div><select class="field-input"><option>Prefer not to say</option><option>He / Him</option><option>She / Her</option><option>They / Them</option></select></div>
+          </div>
+          <div class="field-grid">
+            <div class="field"><div class="field-label">Mobile phone</div><input class="field-input" placeholder="+1 (___) ___-____" /></div>
+            <div class="field"><div class="field-label">Work extension</div><input class="field-input" placeholder="e.g. 4821" /></div>
+          </div>
+        </div>
+        <div class="ob-card">
+          <div class="ob-card-title">Emergency contact</div>
+          <div class="field-grid" style="margin-bottom:16px">
+            <div class="field"><div class="field-label">Contact name</div><input class="field-input" placeholder="Full name" /></div>
+            <div class="field"><div class="field-label">Relationship</div><select class="field-input"><option>Select...</option><option>Spouse / Partner</option><option>Parent</option><option>Sibling</option><option>Other</option></select></div>
+          </div>
+          <div class="field"><div class="field-label">Contact phone</div><input class="field-input" placeholder="+1 (___) ___-____" /></div>
+        </div>
+        <div class="ob-card">
+          <div class="ob-card-title">Preferences</div>
+          <div class="field-grid">
+            <div class="field"><div class="field-label">T-shirt size <span class="field-optional">for company swag</span></div><select class="field-input"><option>Select size</option><option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option></select></div>
+            <div class="field"><div class="field-label">Office location</div><select class="field-input"><option>Los Angeles (HQ)</option><option>New York</option><option>Remote</option></select></div>
+          </div>
+        </div>
+        <div class="ob-footer">
+          <button class="btn btn-ghost" onclick="setStep(0)">← Back</button>
+          <div class="ob-footer-hint">Auto-saves as you type</div>
+          <button class="btn btn-primary" onclick="setStep(2)">Save & continue →</button>
+        </div>
+      </div>
+
+      <!-- STEP 2: Systems -->
+      <div id="step-2" class="ob-step" style="display:none">
+        <div class="ob-step-header">
+          <div class="ob-step-eyebrow">Step 2 of 5</div>
+          <div class="ob-step-title">System access</div>
+          <div class="ob-step-desc">Select the tools you'll need. Required systems are pre-checked. IT will provision access within 1 business day.</div>
+        </div>
+        <div class="ob-card">
+          <div class="ob-card-title">Required tools</div>
+          <div class="sys-item checked"><div class="sys-icon" style="background:#E7F3FF">💬</div><div class="sys-info"><div class="sys-name">Slack</div><div class="sys-desc">Team communication & channels</div></div><div class="sys-right"><span class="badge badge-required">Required</span><div class="toggle">✓</div></div></div>
+          <div class="sys-item checked"><div class="sys-icon" style="background:#FFF0E7">📧</div><div class="sys-info"><div class="sys-name">Google Workspace</div><div class="sys-desc">Email, Drive, Calendar & Meet</div></div><div class="sys-right"><span class="badge badge-required">Required</span><div class="toggle">✓</div></div></div>
+          <div class="sys-item checked"><div class="sys-icon" style="background:#F0F0FF">🐙</div><div class="sys-info"><div class="sys-name">GitHub</div><div class="sys-desc">Code repository, PRs & CI/CD</div></div><div class="sys-right"><span class="badge badge-required">Required</span><div class="toggle">✓</div></div></div>
+          <div class="sys-item checked"><div class="sys-icon" style="background:#FFF8E7">🔐</div><div class="sys-info"><div class="sys-name">1Password</div><div class="sys-desc">Password & secrets manager</div></div><div class="sys-right"><span class="badge badge-required">Required</span><div class="toggle">✓</div></div></div>
+        </div>
+        <div class="ob-card">
+          <div class="ob-card-title">Optional tools</div>
+          <div class="sys-item checked"><div class="sys-icon" style="background:#F0FFF4">📊</div><div class="sys-info"><div class="sys-name">Notion</div><div class="sys-desc">Docs, wikis & project planning</div></div><div class="sys-right"><span class="badge badge-requested">Requested</span><div class="toggle">✓</div></div></div>
+          <div class="sys-item"><div class="sys-icon" style="background:#EEF4FF">✅</div><div class="sys-info"><div class="sys-name">Jira</div><div class="sys-desc">Project & issue tracking</div></div><div class="sys-right"><span class="badge badge-optional">Optional</span><div class="toggle"></div></div></div>
+          <div class="sys-item"><div class="sys-icon" style="background:#FFF3E7">☁️</div><div class="sys-info"><div class="sys-name">AWS Console</div><div class="sys-desc">Cloud infrastructure & services</div></div><div class="sys-right"><span class="badge badge-optional">Optional</span><div class="toggle"></div></div></div>
+          <div class="sys-item"><div class="sys-icon" style="background:#F0FFF4">💰</div><div class="sys-info"><div class="sys-name">Expensify</div><div class="sys-desc">Expense reporting & reimbursements</div></div><div class="sys-right"><span class="badge badge-optional">Optional</span><div class="toggle"></div></div></div>
+        </div>
+        <div class="ob-footer">
+          <button class="btn btn-ghost" onclick="setStep(1)">← Back</button>
+          <div class="ob-footer-hint">5 of 8 selected</div>
+          <button class="btn btn-primary" onclick="setStep(3)">Continue →</button>
+        </div>
+      </div>
+
+      <!-- STEP 3: HR Docs -->
+      <div id="step-3" class="ob-step" style="display:none">
+        <div class="ob-step-header">
+          <div class="ob-step-eyebrow">Step 3 of 5</div>
+          <div class="ob-step-title">HR paperwork</div>
+          <div class="ob-step-desc">Complete all required forms before your start date. Tap a card to open the form.</div>
+        </div>
+        <div class="ob-card">
+          <div class="ob-card-title">Payroll & compensation</div>
+          <div class="hr-grid">
+            <div class="hr-doc complete"><div class="hr-doc-icon">📄</div><div class="hr-doc-name">Direct deposit</div><div class="hr-doc-status">✓ Completed Jan 10</div></div>
+            <div class="hr-doc"><div class="hr-doc-icon">📊</div><div class="hr-doc-name">Tax withholding (W-4)</div><div class="hr-doc-status">Tap to complete →</div></div>
+            <div class="hr-doc"><div class="hr-doc-icon">💼</div><div class="hr-doc-name">401(k) enrollment</div><div class="hr-doc-status">Tap to complete →</div></div>
+          </div>
+        </div>
+        <div class="ob-card">
+          <div class="ob-card-title">Benefits enrollment</div>
+          <div class="hr-grid">
+            <div class="hr-doc"><div class="hr-doc-icon">🏥</div><div class="hr-doc-name">Health insurance</div><div class="hr-doc-status">Deadline: Jan 14</div></div>
+            <div class="hr-doc"><div class="hr-doc-icon">🦷</div><div class="hr-doc-name">Dental & vision</div><div class="hr-doc-status">Deadline: Jan 14</div></div>
+          </div>
+        </div>
+        <div class="ob-card">
+          <div class="ob-card-title">Legal & compliance</div>
+          <div class="hr-grid">
+            <div class="hr-doc complete"><div class="hr-doc-icon">📋</div><div class="hr-doc-name">I-9 verification</div><div class="hr-doc-status">✓ Completed Jan 8</div></div>
+            <div class="hr-doc complete"><div class="hr-doc-icon">✍️</div><div class="hr-doc-name">Offer letter</div><div class="hr-doc-status">✓ Signed Jan 5</div></div>
+            <div class="hr-doc"><div class="hr-doc-icon">📜</div><div class="hr-doc-name">IP & NDA agreement</div><div class="hr-doc-status">Tap to complete →</div></div>
+          </div>
+        </div>
+        <div class="ob-footer">
+          <button class="btn btn-ghost" onclick="setStep(2)">← Back</button>
+          <div class="ob-footer-hint">3 of 8 completed</div>
+          <button class="btn btn-primary" onclick="setStep(4)">Continue →</button>
+        </div>
+      </div>
+
+      <!-- STEP 4: Equipment -->
+      <div id="step-4" class="ob-step" style="display:none">
+        <div class="ob-step-header">
+          <div class="ob-step-eyebrow">Step 4 of 5</div>
+          <div class="ob-step-title">Equipment checklist</div>
+          <div class="ob-step-desc">Confirm what you've received. IT will follow up on any unchecked items within 24 hours.</div>
+        </div>
+        <div class="ob-card">
+          <div class="equip-item checked"><div class="equip-icon">💻</div><div class="equip-info"><div class="equip-name">MacBook Pro 16"</div><div class="equip-detail">M3 Max · 36GB RAM · 1TB SSD</div><div class="equip-serial">SN: MBP-2024-10481</div></div><div class="checkbox">✓</div></div>
+          <div class="equip-item checked"><div class="equip-icon">🖥️</div><div class="equip-info"><div class="equip-name">External monitor</div><div class="equip-detail">Dell 27" 4K USB-C · P2723QE</div></div><div class="checkbox">✓</div></div>
+          <div class="equip-item"><div class="equip-icon">⌨️</div><div class="equip-info"><div class="equip-name">Keyboard & mouse</div><div class="equip-detail">Apple Magic Keyboard + Magic Trackpad</div></div><div class="checkbox"></div></div>
+          <div class="equip-item"><div class="equip-icon">📱</div><div class="equip-info"><div class="equip-name">Work phone</div><div class="equip-detail">iPhone 15 Pro · IT will configure MDM</div></div><div class="checkbox"></div></div>
+          <div class="equip-item checked"><div class="equip-icon">🔌</div><div class="equip-info"><div class="equip-name">Desk accessories</div><div class="equip-detail">USB-C hub, 140W power adapter, cables</div></div><div class="checkbox">✓</div></div>
+          <div class="equip-item"><div class="equip-icon">🎧</div><div class="equip-info"><div class="equip-name">Headset</div><div class="equip-detail">Bose QuietComfort 45</div></div><div class="checkbox"></div></div>
+          <div class="equip-item"><div class="equip-icon">🪑</div><div class="equip-info"><div class="equip-name">Desk assignment</div><div class="equip-detail">Floor 3 · Bay C · Desk #C14</div></div><div class="checkbox"></div></div>
+        </div>
+        <div class="ob-footer">
+          <button class="btn btn-ghost" onclick="setStep(3)">← Back</button>
+          <div class="ob-footer-hint">3 of 7 confirmed</div>
+          <button class="btn btn-primary" onclick="setStep(5)">Continue →</button>
+        </div>
+      </div>
+
+      <!-- STEP 5: Building Access -->
+      <div id="step-5" class="ob-step" style="display:none">
+        <div class="ob-step-header">
+          <div class="ob-step-eyebrow">Step 5 of 5</div>
+          <div class="ob-step-title">Building access</div>
+          <div class="ob-step-desc">Your access is being provisioned. Pending items will be ready by your start date. Contact IT if anything is missing.</div>
+        </div>
+        <div class="ob-card">
+          <div class="access-item"><div class="access-icon">🏢</div><div class="access-info"><div class="access-name">Main building access</div><div class="access-detail">Floors 1–4 · Main entrance + parking garage</div></div><span class="badge badge-active">Active</span></div>
+          <div class="access-item"><div class="access-icon">🔑</div><div class="access-info"><div class="access-name">Badge & key card</div><div class="access-detail">Pick up from reception with government photo ID</div></div><span class="badge badge-scheduled">Jan 15</span></div>
+          <div class="access-item"><div class="access-icon">📧</div><div class="access-info"><div class="access-name">Work email</div><div class="access-detail">alex.johnson@acme.com · Google Workspace</div><div class="access-value">Provisioned — check your personal email for setup link</div></div><span class="badge badge-active">Active</span></div>
+          <div class="access-item"><div class="access-icon">📱</div><div class="access-info"><div class="access-name">Work phone number</div><div class="access-detail">Direct line assigned by IT</div><div class="access-value">(310) 555-0192 · Extension 4821</div></div><span class="badge badge-active">Active</span></div>
+          <div class="access-item"><div class="access-icon">🅿️</div><div class="access-info"><div class="access-name">Parking permit</div><div class="access-detail">Garage B · Level 2</div></div><span class="badge badge-pending">Pending</span></div>
+          <div class="access-item"><div class="access-icon">🍽️</div><div class="access-info"><div class="access-name">Cafeteria account</div><div class="access-detail">$150/month credit · Linked to key card</div></div><span class="badge badge-active">Active</span></div>
+          <div class="access-item"><div class="access-icon">🌐</div><div class="access-info"><div class="access-name">VPN access</div><div class="access-detail">Cisco AnyConnect · Setup guide sent to email</div></div><span class="badge badge-pending">Pending</span></div>
+        </div>
+        <div class="ob-footer">
+          <button class="btn btn-ghost" onclick="setStep(4)">← Back</button>
+          <div></div>
+          <button class="btn btn-success" onclick="setStep(6)">Complete onboarding ✓</button>
+        </div>
+      </div>
+
+      <!-- STEP 6: Complete -->
+      <div id="step-6" class="ob-step" style="display:none">
+        <div class="complete-hero">
+          <div class="complete-icon">🎉</div>
+          <div class="complete-title">You're all set, Alex!</div>
+          <div class="complete-sub">Onboarding complete. Your HR admin has been notified and IT is processing your requests.</div>
+        </div>
+        <div class="complete-stats">
+          <div class="stat-card"><div class="stat-label">Profile</div><div class="stat-value" style="color:var(--green-600)">✓</div><div class="stat-sub">Complete</div></div>
+          <div class="stat-card"><div class="stat-label">Systems</div><div class="stat-value">5/8</div><div class="stat-sub">Requested</div></div>
+          <div class="stat-card"><div class="stat-label">HR forms</div><div class="stat-value">3/8</div><div class="stat-sub">Completed</div></div>
+          <div class="stat-card"><div class="stat-label">Equipment</div><div class="stat-value">3/7</div><div class="stat-sub">Confirmed</div></div>
+        </div>
+        <div class="ob-card">
+          <div class="ob-card-title">What happens next</div>
+          <div class="task-item"><div class="task-dot pending"></div><div class="task-text">Complete remaining HR forms before Jan 14</div><div class="task-date">Due Jan 14</div></div>
+          <div class="task-item"><div class="task-dot pending"></div><div class="task-text">Pick up badge & key card from reception on your first day</div><div class="task-date">Jan 15</div></div>
+          <div class="task-item"><div class="task-dot pending"></div><div class="task-text">IT will provision VPN access and send setup instructions</div><div class="task-date">Jan 14</div></div>
+          <div class="task-item"><div class="task-dot done"></div><div class="task-text">Welcome email from your manager Jordan Lee — check your inbox</div><div class="task-date">Done</div></div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     SCREEN 2 — ADMIN DASHBOARD
+════════════════════════════════════════════ -->
+<div id="screen-admin" class="screen">
+  <div class="admin-layout">
+    <div class="admin-header">
+      <div>
+        <div class="admin-title">Onboarding Dashboard</div>
+        <div class="admin-sub">January 2025 · 12 new hires</div>
+      </div>
+      <button class="btn btn-primary" style="font-size:13px">+ Invite employee</button>
+    </div>
+
+    <div class="admin-stats">
+      <div class="admin-stat"><div class="admin-stat-label">Active onboardings</div><div class="admin-stat-value">12</div><div class="admin-stat-delta">↑ 4 this month</div></div>
+      <div class="admin-stat"><div class="admin-stat-label">Completed</div><div class="admin-stat-value">8</div><div class="admin-stat-delta" style="color:var(--green-600)">67% completion rate</div></div>
+      <div class="admin-stat"><div class="admin-stat-label">Pending HR forms</div><div class="admin-stat-value" style="color:var(--amber-600)">23</div><div class="admin-stat-delta" style="color:var(--amber-600)">Across 7 employees</div></div>
+      <div class="admin-stat"><div class="admin-stat-label">IT access requests</div><div class="admin-stat-value" style="color:var(--brand-600)">31</div><div class="admin-stat-delta" style="color:var(--gray-400)">Avg. 1.2 day turnaround</div></div>
+    </div>
+
+    <div class="admin-filters">
+      <button class="filter-chip active">All employees</button>
+      <button class="filter-chip">In progress</button>
+      <button class="filter-chip">Completed</button>
+      <button class="filter-chip">Needs attention</button>
+      <button class="filter-chip">Starting this week</button>
+      <input class="search-input" placeholder="Search by name or dept…" />
+    </div>
+
+    <div class="table-wrap">
+      <table class="emp-table">
+        <thead>
+          <tr>
+            <th>Employee</th>
+            <th>Department</th>
+            <th>Start date</th>
+            <th>Progress</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="emp-row-name"><div class="emp-avatar" style="background:#E7F3FF;color:#2356C8">AJ</div><div><div class="emp-name">Alex Johnson</div><div class="emp-email">alex.johnson@acme.com</div></div></div></td>
+            <td><div class="emp-dept">Engineering</div></td>
+            <td><div class="emp-date">Jan 15, 2025</div></td>
+            <td><div class="progress-mini"><div class="progress-bar-mini"><div class="progress-fill-mini" style="width:33%"></div></div><div class="progress-pct">33%</div></div></td>
+            <td><span class="badge badge-scheduled">In progress</span></td>
+            <td><button class="btn-sm" onclick="showScreen('detail')">View →</button></td>
+          </tr>
+          <tr>
+            <td><div class="emp-row-name"><div class="emp-avatar" style="background:#F0FFF4;color:#14855F">SC</div><div><div class="emp-name">Sarah Chen</div><div class="emp-email">s.chen@acme.com</div></div></div></td>
+            <td><div class="emp-dept">Design</div></td>
+            <td><div class="emp-date">Jan 13, 2025</div></td>
+            <td><div class="progress-mini"><div class="progress-bar-mini"><div class="progress-fill-mini done" style="width:100%"></div></div><div class="progress-pct">100%</div></div></td>
+            <td><span class="badge badge-active">Complete</span></td>
+            <td><button class="btn-sm">View →</button></td>
+          </tr>
+          <tr>
+            <td><div class="emp-row-name"><div class="emp-avatar" style="background:#FFF8E7;color:#B87014">MP</div><div><div class="emp-name">Marcus Patel</div><div class="emp-email">m.patel@acme.com</div></div></div></td>
+            <td><div class="emp-dept">Sales</div></td>
+            <td><div class="emp-date">Jan 20, 2025</div></td>
+            <td><div class="progress-mini"><div class="progress-bar-mini"><div class="progress-fill-mini" style="width:16%"></div></div><div class="progress-pct">16%</div></div></td>
+            <td><span class="badge badge-pending">Not started</span></td>
+            <td><button class="btn-sm">View →</button></td>
+          </tr>
+          <tr>
+            <td><div class="emp-row-name"><div class="emp-avatar" style="background:#FEF0EF;color:#B91C1C">LR</div><div><div class="emp-name">Lisa Rodriguez</div><div class="emp-email">l.rodriguez@acme.com</div></div></div></td>
+            <td><div class="emp-dept">Finance</div></td>
+            <td><div class="emp-date">Jan 8, 2025</div></td>
+            <td><div class="progress-mini"><div class="progress-bar-mini"><div class="progress-fill-mini" style="width:66%"></div></div><div class="progress-pct">66%</div></div></td>
+            <td><span class="badge badge-required">Overdue forms</span></td>
+            <td><button class="btn-sm">View →</button></td>
+          </tr>
+          <tr>
+            <td><div class="emp-row-name"><div class="emp-avatar" style="background:#F0F0FF;color:#4B82F0">TK</div><div><div class="emp-name">Tom Kim</div><div class="emp-email">t.kim@acme.com</div></div></div></td>
+            <td><div class="emp-dept">Engineering</div></td>
+            <td><div class="emp-date">Jan 15, 2025</div></td>
+            <td><div class="progress-mini"><div class="progress-bar-mini"><div class="progress-fill-mini done" style="width:100%"></div></div><div class="progress-pct">100%</div></div></td>
+            <td><span class="badge badge-active">Complete</span></td>
+            <td><button class="btn-sm">View →</button></td>
+          </tr>
+          <tr>
+            <td><div class="emp-row-name"><div class="emp-avatar" style="background:#F0FFF4;color:#14855F">NW</div><div><div class="emp-name">Nina Walsh</div><div class="emp-email">n.walsh@acme.com</div></div></div></td>
+            <td><div class="emp-dept">Product</div></td>
+            <td><div class="emp-date">Jan 22, 2025</div></td>
+            <td><div class="progress-mini"><div class="progress-bar-mini"><div class="progress-fill-mini" style="width:50%"></div></div><div class="progress-pct">50%</div></div></td>
+            <td><span class="badge badge-scheduled">In progress</span></td>
+            <td><button class="btn-sm">View →</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     SCREEN 3 — EMPLOYEE DETAIL (Admin)
+════════════════════════════════════════════ -->
+<div id="screen-detail" class="screen">
+  <div class="admin-layout">
+    <div class="admin-header">
+      <div style="display:flex;align-items:center;gap:12px">
+        <button class="btn btn-ghost" style="font-size:13px" onclick="showScreen('admin')">← All employees</button>
+        <div style="width:1px;height:20px;background:var(--gray-200)"></div>
+        <div><div class="admin-title">Alex Johnson</div><div class="admin-sub">Engineering · Started Jan 15, 2025</div></div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-ghost" style="font-size:13px">Send reminder</button>
+        <button class="btn btn-primary" style="font-size:13px">Mark complete</button>
+      </div>
+    </div>
+
+    <div class="detail-layout">
+      <div>
+        <div class="detail-card">
+          <div class="detail-profile">
+            <div class="detail-avatar">AJ</div>
+            <div><div class="detail-name">Alex Johnson</div><div class="detail-role">Software Engineer · Engineering</div></div>
+          </div>
+          <div class="detail-meta-grid">
+            <div class="detail-meta-item"><div class="detail-meta-label">Email</div><div class="detail-meta-value">alex.johnson@acme.com</div></div>
+            <div class="detail-meta-item"><div class="detail-meta-label">Manager</div><div class="detail-meta-value">Jordan Lee</div></div>
+            <div class="detail-meta-item"><div class="detail-meta-label">Start date</div><div class="detail-meta-value">January 15, 2025</div></div>
+            <div class="detail-meta-item"><div class="detail-meta-label">Location</div><div class="detail-meta-value">Los Angeles (HQ)</div></div>
+            <div class="detail-meta-item"><div class="detail-meta-label">Phone</div><div class="detail-meta-value">(310) 555-0192</div></div>
+            <div class="detail-meta-item"><div class="detail-meta-label">Progress</div><div class="detail-meta-value" style="color:var(--brand-600)">33% complete</div></div>
+          </div>
+        </div>
+
+        <div class="detail-card">
+          <div class="detail-card-title">HR documents</div>
+          <div class="task-item"><div class="task-dot done"></div><div class="task-text">Direct deposit</div><div class="task-date">Completed Jan 10</div></div>
+          <div class="task-item"><div class="task-dot done"></div><div class="task-text">I-9 verification</div><div class="task-date">Completed Jan 8</div></div>
+          <div class="task-item"><div class="task-dot done"></div><div class="task-text">Offer letter signed</div><div class="task-date">Completed Jan 5</div></div>
+          <div class="task-item"><div class="task-dot overdue"></div><div class="task-text">Health insurance enrollment</div><div class="task-date" style="color:var(--red-600)">Due Jan 14</div></div>
+          <div class="task-item"><div class="task-dot pending"></div><div class="task-text">Tax withholding (W-4)</div><div class="task-date">Pending</div></div>
+          <div class="task-item"><div class="task-dot pending"></div><div class="task-text">401(k) enrollment</div><div class="task-date">Pending</div></div>
+          <div class="task-item"><div class="task-dot pending"></div><div class="task-text">Dental & vision</div><div class="task-date">Pending</div></div>
+          <div class="task-item"><div class="task-dot pending"></div><div class="task-text">IP & NDA agreement</div><div class="task-date">Pending</div></div>
+        </div>
+
+        <div class="detail-card">
+          <div class="detail-card-title">System access requests</div>
+          <div class="task-item"><div class="task-dot done"></div><div class="task-text">Slack · Provisioned</div><div class="task-date">Jan 10</div></div>
+          <div class="task-item"><div class="task-dot done"></div><div class="task-text">Google Workspace · Active</div><div class="task-date">Jan 10</div></div>
+          <div class="task-item"><div class="task-dot pending"></div><div class="task-text">GitHub · Pending IT approval</div><div class="task-date">Requested</div></div>
+          <div class="task-item"><div class="task-dot pending"></div><div class="task-text">1Password · Pending</div><div class="task-date">Requested</div></div>
+          <div class="task-item"><div class="task-dot pending"></div><div class="task-text">Notion · Pending</div><div class="task-date">Requested</div></div>
+        </div>
+      </div>
+
+      <!-- Right panel -->
+      <div>
+        <div class="detail-card">
+          <div class="detail-card-title">Onboarding progress</div>
+          <div style="margin-bottom:14px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+              <div style="font-size:13px;color:var(--gray-600)">Overall completion</div>
+              <div style="font-size:13px;font-weight:600;color:var(--brand-600)">33%</div>
+            </div>
+            <div class="ob-progress-bar" style="height:6px"><div class="ob-progress-fill" style="width:33%"></div></div>
+          </div>
+          <div class="task-item"><div class="task-dot done"></div><div class="task-text" style="font-size:12px">Welcome</div></div>
+          <div class="task-item"><div class="task-dot done"></div><div class="task-text" style="font-size:12px">Profile — complete</div></div>
+          <div class="task-item"><div class="task-dot pending"></div><div class="task-text" style="font-size:12px">System access — in progress</div></div>
+          <div class="task-item"><div class="task-dot overdue"></div><div class="task-text" style="font-size:12px">HR paperwork — overdue</div></div>
+          <div class="task-item"><div class="task-dot pending"></div><div class="task-text" style="font-size:12px">Equipment — not started</div></div>
+          <div class="task-item"><div class="task-dot pending"></div><div class="task-text" style="font-size:12px">Building access — not started</div></div>
+        </div>
+
+        <div class="detail-card">
+          <div class="detail-card-title">Recent activity</div>
+          <div class="activity-item"><div class="activity-icon">📄</div><div><div class="activity-text">Completed direct deposit form</div><div class="activity-time">Jan 10 · 2:34pm</div></div></div>
+          <div class="activity-item"><div class="activity-icon">✅</div><div><div class="activity-text">Requested Notion access</div><div class="activity-time">Jan 10 · 2:31pm</div></div></div>
+          <div class="activity-item"><div class="activity-icon">👤</div><div><div class="activity-text">Profile information saved</div><div class="activity-time">Jan 10 · 2:28pm</div></div></div>
+          <div class="activity-item"><div class="activity-icon">👋</div><div><div class="activity-text">Started onboarding flow</div><div class="activity-time">Jan 10 · 2:25pm</div></div></div>
+        </div>
+
+        <div class="detail-card">
+          <div class="detail-card-title">Admin notes</div>
+          <textarea class="field-input" style="width:100%;height:80px;padding:10px;resize:none;font-family:var(--font);font-size:13px;line-height:1.5" placeholder="Add a note visible only to HR/IT admins…"></textarea>
+          <button class="btn btn-ghost" style="font-size:12px;margin-top:8px;width:100%;justify-content:center">Save note</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let currentStep = 1;
+
+  function showScreen(name) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById('screen-' + name).classList.add('active');
+    document.querySelectorAll('.nav-tab').forEach((t, i) => {
+      const names = ['employee','admin','detail'];
+      t.classList.toggle('active', names[i] === name);
+    });
+  }
+
+  function setStep(n) {
+    document.querySelectorAll('.ob-step').forEach(s => s.style.display = 'none');
+    const el = document.getElementById('step-' + n);
+    if (el) el.style.display = 'block';
+    currentStep = n;
+    document.querySelectorAll('.ob-nav-item').forEach((item, i) => {
+      item.classList.remove('active','done');
+      if (i === n - 1) item.classList.add('active');
+      else if (i < n - 1 && i >= 0) item.classList.add('done');
+    });
+    const pct = Math.round((Math.max(0, n - 1) / 5) * 100);
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressText').textContent = Math.max(0, n - 1);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  setStep(1);
+</script>
+</body>
+</html>
